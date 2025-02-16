@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <style>
+        body {
+            font-family: Cambria, serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: left;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background: linear-gradient(to left, #007bff 50%, red 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-position 0.4s ease-in-out;
+        }
+
+        button:hover {
+            background-position: left bottom;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: red;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Employee Form</h1>
+
+<form action="#" th:action="@{/employees/save}" th:object="${employee}" method="post">
+    <div>
+<!--    add hidden form fields to handle the update-->
+    <input type="hidden" th:field="*{id}">
+
+        <label for="firstName">First Name:</label>
+        <input type="text" th:field="*{firstName}" id="firstName" required>
+    </div>
+    <div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" th:field="*{lastName}" id="lastName" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" th:field="*{email}" id="email" required>
+    </div>
+    <button type="submit">Save</button>
+</form>
+
+<hr>
+<a th:href="@{/employees/list}">Back to List</a>
+
+</body>
+</html>
